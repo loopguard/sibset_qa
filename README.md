@@ -1,7 +1,7 @@
 # sibset_qa
 Testing tools &amp; enviroment
-Используется Selenium WebDriver, Python, pytest.
-Фреймворк Intellij IDEA
+Selenium WebDriver, Python, unittest/pytest.
+Intellij IDEA
 
->sibset_qa
->>Tests #все тесты хранятся в этой директории
+-sibset_qa
+--Tests #сами тесты хранятся в этой директории
