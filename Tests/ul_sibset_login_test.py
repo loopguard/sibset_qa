@@ -1,21 +1,29 @@
-#######################
-#Вход в личный кабинет Юр.лиц по адресу http://cabinet-ul.sibset.ru/login
-#Проверка входа с корректными данными и выход из личного кабинета
-#Проба работы с Unittest вместо pytest
-#Chromedriver
-#######################
+"""
+Вход в личный кабинет Юр.лиц по адресу http://cabinet-ul.sibset.ru/login
+Проверка входа с корректными данными и выход из личного кабинета
+Проба работы с Unittest вместо pytest
+Chromedriver
+"""
 
 from selenium import webdriver
 import unittest, time
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 class login_ul_chrome_test(unittest.TestCase): #Chromedriver
 
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        """
+        Запуск браузера Хром без отрисовки UI в режиме Headless
+
+        options.binary_location = '/Users/a.efimov/AppData/Local/Google/Chrome SxS/Application/chrome.exe'
+        options.add_argument('headless')
+        """
+        options = webdriver.ChromeOptions()
+        self.driver = webdriver.Chrome(chrome_options=options)
         self.driver.get('http://cabinet-ul.sibset.ru/login')
 
 
