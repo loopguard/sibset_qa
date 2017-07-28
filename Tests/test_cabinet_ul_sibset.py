@@ -121,6 +121,45 @@ class login_ul_chrome_test(unittest.TestCase):
         driver.find_element_by_xpath('//*[@id="root"]/div/div/div/div[1]/a[3]/span').click()
         wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/div/div/div[4]/div/div[1]')))
 
+    def test_7_promise_payment(self):
+        """
+        1.Заходим на страницу личного кабинета Юр.лиц
+        2.Выбираем Обещаный платеж
+        3.Проверяем переход на новую вкладку с оплатой
+        """
+
+        driver = self.driver
+        driver.find_element_by_name('login').send_keys('212140Tk')
+        driver.find_element_by_name('password').send_keys('212140Tk')
+        driver.find_element_by_class_name('ss-button').click()
+        wait = WebDriverWait(driver, 10)
+        driver.implicitly_wait(10)
+        driver.find_element_by_xpath('//*[@id="root"]/div/div/div/div[4]/div/div[1]/div[2]/a[1]').click()
+        driver.get('http://insufficient-funds.211.ru/?account=1000000212140')
+        wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'send_promise')))
+
+    def test_8_ul_payment(self):
+        """
+        1.Заходим на страницу личного кабинета Юр.лиц
+        2.Выбираем Способы Оплаты
+        3.Проверяем переход на новую вкладку с оплатой для юр лиц
+        """
+
+        driver = self.driver
+        driver.find_element_by_name('login').send_keys('212140Tk')
+        driver.find_element_by_name('password').send_keys('212140Tk')
+        driver.find_element_by_class_name('ss-button').click()
+        wait = WebDriverWait(driver, 10)
+        driver.implicitly_wait(10)
+        driver.find_element_by_xpath('//*[@id="root"]/div/div/div/div[4]/div/div[1]/div[2]/a[2]').click()
+        driver.get('http://nsk.sibset.ru/b2b/abonentam/?account=1000000212140')
+        wait.until(EC.presence_of_element_located((By.ID, "account")))
+
+
+    def tearDown(self):
+        self.driver.close()
+
+
 
 class login_ul_firefox_test(unittest.TestCase):
 
@@ -224,8 +263,43 @@ class login_ul_firefox_test(unittest.TestCase):
         driver.find_element_by_xpath('//*[@id="root"]/div/div/div/div[1]/a[3]/span').click()
         wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/div/div/div[4]/div/div[1]')))
 
+    def test_7_promise_payment(self):
+        """
+        1.Заходим на страницу личного кабинета Юр.лиц
+        2.Выбираем Обещаный платеж
+        3.Проверяем переход на новую вкладку с оплатой
+        """
+
+        driver = self.driver
+        driver.find_element_by_name('login').send_keys('212140Tk')
+        driver.find_element_by_name('password').send_keys('212140Tk')
+        driver.find_element_by_class_name('ss-button').click()
+        wait = WebDriverWait(driver, 10)
+        driver.implicitly_wait(10)
+        driver.find_element_by_xpath('//*[@id="root"]/div/div/div/div[4]/div/div[1]/div[2]/a[1]').click()
+        driver.get('http://insufficient-funds.211.ru/?account=1000000212140')
+        wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'send_promise')))
+
+    def test_8_ul_payment(self):
+        """
+        1.Заходим на страницу личного кабинета Юр.лиц
+        2.Выбираем Способы Оплаты
+        3.Проверяем переход на новую вкладку с оплатой для юр лиц
+        """
+
+        driver = self.driver
+        driver.find_element_by_name('login').send_keys('212140Tk')
+        driver.find_element_by_name('password').send_keys('212140Tk')
+        driver.find_element_by_class_name('ss-button').click()
+        wait = WebDriverWait(driver, 10)
+        driver.implicitly_wait(10)
+        driver.find_element_by_xpath('//*[@id="root"]/div/div/div/div[4]/div/div[1]/div[2]/a[2]').click()
+        driver.get('http://nsk.sibset.ru/b2b/abonentam/?account=1000000212140')
+        wait.until(EC.presence_of_element_located((By.ID, "account")))
+
 
     def tearDown(self):
         self.driver.close()
+
 if __name__ == "__main__":
     unittest.main()
