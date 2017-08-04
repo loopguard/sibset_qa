@@ -20,9 +20,9 @@ class TestCabinetChrome(unittest.TestCase):
         self.driver.implicitly_wait(10)
         self.driver.get('http://dev.cabinet.sibset.ru/admin/account')
         self.driver.find_element_by_id(
-            'adminuser-login').send_keys('a.efimov') #login
+            'adminuser-login').send_keys('$') #login
         self.driver.find_element_by_id(
-            'adminuser-password').send_keys('Pewpew15') #password
+            'adminuser-password').send_keys('$') #password
         self.driver.find_element_by_class_name(
             'admin_submit_button').click()
         return self.driver
